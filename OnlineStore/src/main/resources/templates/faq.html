@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+	<div th:replace="common/header :: navbar" />
+	
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<span>Frequently asked questions</span>
+				</h2>
+			</div>
+
+			<div class="col-xs-4" vstyle="width: 400px; height: 320px">
+					<a th:href="@{/}"><img src="/image/logo.png"
+						class="img-responsive" style="padding:1px 6px;cursor:pointer;width: 100%;" /></a>
+				</div>
+		</div>
+		<hr
+			style="position: absolute; width: 73%; height: 6px; background-color: #333; z-index: -1; margin-top: -60px;" />
+			
+		</div>
+		<div class="row" style="margin-top: 120px;">
+			<div class="col-xs-7 col-xs-offset-3">
+				<h3>Shopping</h3>
+				<hr />
+				<h4 class="question">Q: How do I place an order?</h4>
+				<p>A:&nbsp;First you need to set up an account, once that is
+					created you are ready to place an order.</p>
+				<h4 class="question">Q: How do I set up an account?&nbsp;</h4>
+				<p>A: Click on the MY ACCOUNT button in the upper right hand corner
+					of the main page and then click on create new account.</p>
+				<h4 class="question">Q: How long does it take to process and
+					ship orders?</h4>
+				<p>A: Please allow 1 - 3 business days (Monday-Friday) for order
+					processing regardless of the shipping method chosen. Once shipped
+					you should receive your order within 3 - 5 business days. Please
+					note that 2 day and Overnight services refer to business days
+					(Monday - Friday).</p>
+				<h4 class="question">Q: Are all of the items guaranteed in
+					stock?</h4>
+				<p>A: We try to update the website as often as possible to
+					reflect out of stock conditions. However, the ability to order an
+					item does not guarantee that it will be in stock when your order is
+					processed. You will be notified if an order is not available.</p>
+				<h4 class="question">Q: I can't find a specific item on the
+					website, are there items available that are not listed on the
+					website?</h4>
+				<p>A:&nbsp;The items that are currently shown on our website
+					represent what is currently available to view and order online.
+					There is a wider selection of merchandise available at the Suave
+					Bookstore. Please visit our stores.
+				<h4 class="question">Q: How can I check the status of my order?</h4>
+				<p>A: If you have registered for an account at the Suave
+					Bookstore, click on "MY ACCOUNT" and login with your username 
+					and password. You can view the status of any orders that were made
+					while you were signed in. You can also contact us
+					at&nbsp;+359877877877 with your name, order number, and a request
+					for status of your order. Our office hours are Monday - Friday 9:00am-
+					18:00pm, Saturday 10:00am - 18:00pm Sunday 11:00am - 16:00pm</p>
+				<h4 class="question">Q: How can I cancel or change my order?</h4>
+				<p>A:&nbsp;You can cancel your order or make a change to it by
+					contacting us at +359877877877 as soon as possible after your
+					order is placed with your name, order number, and a request for
+					cancellation or a description of the requested change. We will do our 
+					best to cancel or modify your order, but we will not be able to 
+					complete the cancellation if your order has been processed or shipped.</p>
+
+				<h3>Shipping&nbsp;</h3>
+				<hr />
+				<p>The Suave Bookstore is proud to offer you competitive shipping
+					rates. All of our shipments are professionally packed to ensure the
+					safety of your items in route.</p>
+				<h4 class="question">Q: How much is the shipping charge on
+					orders?</h4>
+				<p>A: The shipping charge depends on the total amount of the
+					merchandise ordered as well as the shipping method chosen.</p>
+				<h4 class="question">Q: When will I receive my order?</h4>
+				<p>A: On average, your order will be received in 3 - 5 working
+					days. During August and January, delivery time may take
+					longer.&nbsp;</p>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div th:replace="common/header :: footer" />
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

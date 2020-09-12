@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+<style>
+.mapouter {
+	position: relative;
+	text-align: right;
+	height: 500px;
+	width: 600px;
+}
+
+.gmap_canvas {
+	overflow: hidden;
+	background: none !important;
+	height: 500px;
+	width: 600px;
+}
+
+.openinghours {
+	font-family: Lucida Console;
+	border-radius: 4px;
+	margin: 10px;
+	box-shadow: 0 0 10px black;
+	padding: 0 10px 0 10px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.openinghourscontent {
+	float: left;
+}
+
+.openinghourscontent h2 {
+	display: block;
+	text-align: center;
+	margin-top: .33em;
+}
+
+.openinghourscontent button {
+	color: white;
+	font-family: Courier New;
+	font-size: large;
+	font-weight: bolder;
+	background-color: #4679BD;
+	border-radius: 4px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.today {
+	color: #8AC007;
+}
+
+.opening-hours-table tr td:first-child {
+	font-weight: bold;
+}
+
+#open-status {
+	display: block;
+	margin-top: -1em;
+	text-align: center;
+	border: dotted lightgrey 3px;
+}
+
+.openorclosed:after {
+	content: " open during these hours:";
+}
+
+.open {
+	color: green;
+}
+
+/* .open:after {
+	content: " Open";
+	color: #6C0;
+} */
+.closed:after {
+	content: " Closed";
+	color: red;
+}
+
+.opening-hours-table tr td {
+	padding: 5px;
+}
+</style>
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<span>Store hours & Direction</span>
+				</h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="/image/logo.png" class="img-responsive" />
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 73%; height: 6px; background-color: #333; z-index: -1; margin-top: -60px;" />
+
+
+		<br /> <br /> <br /> <br />
+		<div class="row">
+			<div class="col-xs-8">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.1820617147378!2d-3.6954827846044225!3d40.40481737936652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42262f8f94414f%3A0x16a21b678234cbfa!2zUGFzZW8gZGUgbGFzIERlbGljaWFzLCAyMywgMjgwNDUgTWFkcmlkLCDQmNGB0L_QsNC90LjRjw!5e0!3m2!1sbg!2sbg!4v1599930550891!5m2!1sbg!2sbg"
+					width="600" height="450" frameborder="0" style="border: 0;"
+					allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+			<div class="col-xs-4">
+				<section class="openinghours">
+					<div class="openinghourscontent section">
+						<div class="header">
+							<h2>Opening hours</h2>
+							<span id="open-status"><small class="openorclosed">We
+									are</small></span>
+
+						</div>
+						<table class="opening-hours-table">
+							<tr id="Monday" itemprop="openingHours"
+								title="Open Monday at 9am to 6pm">
+								<td>Monday</td>
+								<td class="opens">09:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Tuesday" itemprop="openingHours"
+								title="Open Tuesday at 9am to 6pm">
+								<td>Tuesday</td>
+								<td class="opens">09:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Wednesday" itemprop="openingHours"
+								title="Open Wednesday at 9am to 6pm">
+								<td>Wednesday</td>
+								<td class="opens">09:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Thursday" itemprop="openingHours"
+								title="Open Thursday at 9am to 6pm">
+								<td>Thursday</td>
+								<td class="opens">09:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Friday" itemprop="openingHours"
+								title="Open Friday at 9am to 6pm">
+								<td>Friday</td>
+								<td class="opens">09:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Saturday" itemprop="openingHours"
+								title="Open Saturday at 10am to 6pm">
+								<td>Saturday</td>
+								<td class="opens">10:00</td>
+								<td>-</td>
+								<td class="closes">18:00</td>
+							</tr>
+							<tr id="Sunday" itemprop="openingHours"
+								title="Open Sunday at 11am to 4pm">
+								<td>Sunday</td>
+								<td class="opens">11:00</td>
+								<td>-</td>
+								<td class="closes">16:00</td>
+							</tr>
+						</table>
+						<script>
+							(function(e, t, n, r) {
+								if (e)
+									return;
+								t._appt = true;
+								var i = n.createElement(r), s = n
+										.getElementsByTagName(r)[0];
+								i.async = true;
+								i.src = '//dje0x8zlxc38k.cloudfront.net/loaders/s-min.js';
+								s.parentNode.insertBefore(i, s)
+							})(window._appt, window, document, "script")
+						</script>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<!-- end of container -->
+	<br />
+	<br />
+	<div th:replace="common/header :: footer" />
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+
+	<script type="text/javascript">
+		var currentDate = new Date();
+		var weekday = [];
+		weekday[0] = "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+
+		var currentDay = weekday[currentDate.getDay()];
+
+		var currentTimeHours = currentDate.getHours();
+		currentTimeHours = currentTimeHours < 10 ? "0" + currentTimeHours
+				: currentTimeHours;
+		var currentTimeMinutes = currentDate.getMinutes();
+		var timeNow = currentTimeHours + "" + currentTimeMinutes;
+
+		var currentDayID = "#" + currentDay; //gets todays weekday and turns it into id
+		$(currentDayID).toggleClass("today"); //this works at hightlighting today
+
+		var openTimeSplit = $(currentDayID).children('.opens').text()
+				.split(":");
+
+		var openTimeHours = openTimeSplit[0];
+		openTimeHours = openTimeHours < 10 ? "0" + openTimeHours
+				: openTimeHours;
+
+		var openTimeMinutes = openTimeSplit[1];
+		var openTimex = openTimeSplit[0] + openTimeSplit[1];
+
+		var closeTimeSplit = $(currentDayID).children('.closes').text().split(
+				":");
+
+		var closeTimeHours = closeTimeSplit[0];
+		closeTimeHours = closeTimeHours < 10 ? "0" + closeTimeHours
+				: closeTimeHours;
+
+		var closeTimeMinutes = closeTimeSplit[1];
+		var closeTimex = closeTimeSplit[0] + closeTimeSplit[1];
+
+		if (timeNow >= openTimex && timeNow <= closeTimex) {
+			$(".openorclosed").toggleClass("open");
+		} else {
+			$(".openorclosed").toggleClass("closed");
+		}
+	</script>
+</body>
+</html>

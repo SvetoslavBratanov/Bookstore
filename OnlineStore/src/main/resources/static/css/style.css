@@ -1,0 +1,92 @@
+html, body {
+	padding-bottom: 20px;
+	padding: 0;
+	height: 100%;
+}
+
+}
+hr {
+	border: 0;
+	clear: both;
+	display: block;
+	width: 96%;
+	border: none;
+	height: 1px;
+	color: #333;
+	background-color: #333;
+}
+
+
+.container {
+	/* display: initial; */
+	width: 90%;
+}
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+.box {
+	border: 1px solid red;
+}
+
+.home-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: #000;
+	margin: auto;
+	text-align: center;
+	margin-top: -13px;
+}
+
+.home-headline span {
+	paddig: 5px 22px;
+}
+
+.section-headline {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 24px;
+	color: #000;
+	margin: auto;
+	text-align: center;
+	margin-top: 25px;
+}
+
+.section-headline span {
+	paddig: 5px 22px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10006;";

@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	<div class="container">
+		<hr />
+		<img th:src="@{/image/logo.png}" class="img-responsive"
+			style="width: 250px;" />
+	</div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
