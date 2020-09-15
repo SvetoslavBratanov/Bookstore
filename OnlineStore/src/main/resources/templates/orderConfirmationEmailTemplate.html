@@ -26,8 +26,7 @@ table, th, td {
 	<!-- IF is admin -->
 	<div th:if="${isAdmin}">
 		<p>
-			New order from user: <span th:text="${user.firstName}"></span>	
-			<br/>	
+			New order from user: <span th:text="${user.firstName}"></span> <br />
 			User email: <span th:text="${user.email}"></span>
 		</p>
 	</div>
@@ -45,13 +44,12 @@ table, th, td {
 	</h2>
 	<table>
 		<tr>
-			<th>Billing Detail</th>
+			<th>Billing Details</th>
 			<th>Payment Information</th>
 			<th>Shipping Address</th>
 		</tr>
 		<tr>
-			<td><span th:text="${order.billingAddress.billingAddressName}"></span><br />
-				<span
+			<td><span
 				th:text="${order.billingAddress.billingAddressStreet1}+' '+${order.billingAddress.billingAddressStreet2}"></span><br />
 				<span th:text="${order.billingAddress.billingAddressCity}"></span><br />
 				<span th:text="${order.billingAddress.billingAddressCountry}"></span><br />
@@ -59,11 +57,10 @@ table, th, td {
 			</td>
 			<td><span th:text="${order.payment.holderName}"></span><br /> <span
 				th:text="${order.payment.type}"></span><br /> <span
-				th:text="${order.payment.cardNumber}"></span><br /> <span
-				th:text="${order.payment.expiryMonth}"></span><br /> <span
+				th:text="${order.payment.cardNumber}"></span><br /> <span>Exp
+					Date:</span><span th:text="${order.payment.expiryMonth}"></span>/<span
 				th:text="${order.payment.expiryYear}"></span><br /></td>
-			<td><span th:text="${order.shippingAddress.shippingAddressName}"></span><br />
-				<span
+			<td><span
 				th:text="${order.shippingAddress.shippingAddressStreet1}+' '+${order.shippingAddress.shippingAddressStreet2}"></span><br />
 				<span th:text="${order.shippingAddress.shippingAddressCity}"></span><br />
 				<span th:text="${order.shippingAddress.shippingAddressCountry}"></span><br />
@@ -102,7 +99,7 @@ table, th, td {
 				<td class="emptyrow"></td>
 				<td class="emptyrow text-center"><strong>Tax</strong></td>
 				<td class="emptyrow text-right"
-					data-th-text="${#numbers.formatDecimal(order.orderTotal*0.06,0,2)}"></td>
+					data-th-text="${#numbers.formatDecimal(order.orderTotal*0.20,0,2)}"></td>
 			</tr>
 			<tr>
 				<td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>

@@ -25,22 +25,46 @@ public class MailConstructor {
 	@Autowired
 	private TemplateEngine templateEngine;
 
-	public SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, User user,
-			String password) {
+	public SimpleMailMessage generateTokenEmail(String contextPath, Locale locale, String token, User user,
+			boolean newUser) {
 
 		String url = contextPath + "/newUser?token=" + token;
-		String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"
-				+ password;
 		SimpleMailMessage email = new SimpleMailMessage();
-		email.setTo(user.getEmail());
-		email.setSubject("Suave Bookstore - New User");
+		String message = "";
+		if (newUser) {
+			message = "\nPlease click on this link to verify your email and edit your personal information."
+					+ "\nYou are going to receive your password in a separate email."
+					+ "\n\nKind regards!\nSuave Bookstore";
+			email.setSubject("Suave Bookstore - New User");
+		} else {
+			message = "\nPlease click on this link to verify your email and change your password. "
+					+ "\nYou are going to receive your new password in a separate email."
+					+ "\n\nIf you haven't done this request, you can simply ignore this message and your password won't be changed."
+					+ "\n\nKind regards!\nSuave Bookstore";
+			email.setSubject("Suave Bookstore - Forgotten password");
+		}
+	
 		email.setText(url + message);
+		email.setTo(user.getEmail());
 		email.setFrom(env.getProperty("support.email"));
 		return email;
 
 	}
 
-	public MimeMessagePreparator constructOrderConfirmationEmail(User user, Order order, boolean isAdmin, Locale locale) {
+	public SimpleMailMessage generateNewPassword(User user, String password, Locale locale) {
+		String message = "Hello,\n\nYour password is: " + password
+				+ "\n\nKind regards!\nSuave Bookstore";
+
+		SimpleMailMessage email = new SimpleMailMessage();
+		email.setTo(user.getEmail());
+		email.setSubject("Suave Bookstore - New password");
+		email.setText(message);
+		email.setFrom(env.getProperty("support.email"));
+		return email;
+	}
+
+	public MimeMessagePreparator constructOrderConfirmationEmail(User user, Order order, boolean isAdmin,
+			Locale locale) {
 		Context context = new Context();
 		context.setVariable("user", user);
 		context.setVariable("order", order);
@@ -52,7 +76,7 @@ public class MailConstructor {
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
-				if(isAdmin) {
+				if (isAdmin) {
 					email.setTo(new InternetAddress(env.getProperty("support.email")));
 				} else {
 					email.setTo(user.getEmail());
@@ -65,4 +89,5 @@ public class MailConstructor {
 
 		return messagePreparator;
 	}
+
 }

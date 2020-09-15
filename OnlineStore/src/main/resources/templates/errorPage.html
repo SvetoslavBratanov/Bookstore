@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
-<head th:replace="common/header :: common-header"/>
+<head th:replace="common/header :: common-header" />
 
 <body>
-<div th:replace="common/header :: navbar"/>
+	<div th:replace="common/header :: navbar" />
 
-<div class="container">
-    <div class="row" style="margin-bottom: -100px;">
-        <div class="col-xs-8">
-            <h2 class="section-headline">
-                <h2 class="section-headline">
-                    <span>Error page</span>
-                </h2>
-            </h2>
-        </div>
-        <div class="col-xs-4">
-            <img src="/image/logo.png" class="img-responsive"/>
-        </div>
-    </div>
-    <hr
-            style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -60px;"/>
-    
-    <h3 th:text="${errorMessage}"></h3>
-    
-</div>
-<!-- end of container -->
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px;">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<span>Bad request</span>
+				</h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="/image/logo.png" class="img-responsive" />
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 73%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;" />
 
+		<div class="row" style="margin-top: 10px">
+			<div class="col-xs-9 col-xs-offset-3">
+				<h3 th:text="${errorMessage}"></h3>
+				<h5>
+					Bad request. The request path is invalid. Click <a th:href="@{/}">here</a>
+					to return to the home page.
+				</h5>
+			</div>
+		</div>
+	</div>
+	<!-- end of container -->
+	<br />
+	<br />
+	<div th:replace="common/header :: footer" />
 
-<div th:replace="common/header :: body-bottom-scripts"/>
+	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 </html>
+

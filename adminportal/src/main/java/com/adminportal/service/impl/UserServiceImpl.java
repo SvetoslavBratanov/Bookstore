@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		User localUser = userRepository.findByUsername(user.getUsername());
 
 		if (localUser != null) {
-			LOG.info("user {} already exists. Nothing will be done.", user.getUsername());
+			LOG.info("User {} already exists. Nothing will be done.", user.getUsername());
 		} else {
 			for (UserRole ur : userRoles) {
 				roleRepository.save(ur.getRole());
@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
 			user.getUserRoles().addAll(userRoles);
 
 			localUser = userRepository.save(user);
-			throw new RuntimeException("sasa");
 		}
 
 		return localUser;

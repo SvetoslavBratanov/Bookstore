@@ -22,7 +22,7 @@ function checkPasswordMatch() {
 			$("#checkPasswordMatch").html("Passwords do not match!");
 			$("#updateUserInfoButton").prop('disabled', true);
 		} else {
-			$("#checkPasswordMatch").html("Passwords match");
+			$("#checkPasswordMatch").html("");
 			$("#updateUserInfoButton").prop('disabled', false);
 		}
 	}

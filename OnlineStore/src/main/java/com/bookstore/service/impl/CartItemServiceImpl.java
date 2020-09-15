@@ -74,7 +74,7 @@ public class CartItemServiceImpl implements CartItemService{
 		if(cartItemOptional.isPresent()) {
 			return cartItemOptional.get();
 		}		
-		throw new RuntimeException("Item with such ID doesn't exist!" + id);
+		throw new RuntimeException("Item with such ID doesn't exist! ID: " + id);
 		//TODO change the error
 	}
 	

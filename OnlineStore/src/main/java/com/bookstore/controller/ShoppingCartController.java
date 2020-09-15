@@ -39,7 +39,10 @@ public class ShoppingCartController {
 	public String shoppingCart(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		ShoppingCart shoppingCart = user.getShoppingCart();
-		
+		if(shoppingCart == null) {
+			shoppingCart = new ShoppingCart();
+			user.setShoppingCart(shoppingCart);
+		}
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		
 		shoppingCartService.updateShoppingCart(shoppingCart);
@@ -64,7 +67,7 @@ public class ShoppingCartController {
 			return "forward:/bookDetail?id="+book.getId();
 		}
 		
-		CartItem cartItem = cartItemService.addBookToCartItem(book, user, Integer.parseInt(qty));
+		cartItemService.addBookToCartItem(book, user, Integer.parseInt(qty));
 		model.addAttribute("addBookSuccess", true);
 		
 		return "forward:/bookDetail?id="+book.getId();
@@ -72,8 +75,8 @@ public class ShoppingCartController {
 	
 	@RequestMapping("/updateCartItem")
 	public String updateShoppingCart(
-			@ModelAttribute("id") Long cartItemId,
-			@ModelAttribute("qty") int qty
+			@RequestParam("id") Long cartItemId,
+			@RequestParam("qty") int qty
 			) {
 		CartItem cartItem = cartItemService.findById(cartItemId);
 		cartItem.setQty(qty);

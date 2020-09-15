@@ -35,8 +35,7 @@ public class BookServiceImpl implements BookService {
 		if (bookOptional.isPresent()) {
 			return bookOptional.get();
 		}
-		throw new RuntimeException("Book with such ID doesn't exist!");
-		// TODO change the error
+		throw new RuntimeException("Book with such ID doesn't exist! ID: " + id);
 	}
 
 	public List<Book> findByCategory(String category) {

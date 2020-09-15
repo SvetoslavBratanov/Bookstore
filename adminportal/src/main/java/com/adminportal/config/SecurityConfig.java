@@ -19,6 +19,7 @@ import com.adminportal.utility.SecurityUtility;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	@SuppressWarnings("unused")
 	@Autowired
 	private Environment env;
 
@@ -34,8 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/js/**",
 			"/image/**",
 			"/newUser",
-			"/login",
-			
+			"/login",			
 	};
 
 	@Override
@@ -60,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("s").password("s").roles("USER");
 		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
 	}
 
