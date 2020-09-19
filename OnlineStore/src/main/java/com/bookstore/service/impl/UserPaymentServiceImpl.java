@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserPayment;
 import com.bookstore.repository.UserPaymentRepository;
+import com.bookstore.repository.UserRepository;
 import com.bookstore.service.UserPaymentService;
 
 @Service
@@ -16,6 +17,9 @@ public class UserPaymentServiceImpl implements UserPaymentService{
 
 	@Autowired
 	private UserPaymentRepository userPaymentRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 		
 	public UserPayment findById(Long id) {
 		Optional <UserPayment> userPaymentOptional = userPaymentRepository.findById(id);
@@ -45,4 +49,5 @@ public class UserPaymentServiceImpl implements UserPaymentService{
 			}
 		}
 	}
+
 } 

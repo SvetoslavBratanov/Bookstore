@@ -122,8 +122,8 @@ public class PaymentController {
 
 	@RequestMapping(value = "/setDefaultPayment", method = RequestMethod.POST)
 	public String setDefaultPayment(
-			@RequestParam(value = "defaultUserPaymentId", required = false) Long defaultPaymentId, 
-			Principal principal, Model model) {
+			@RequestParam(value = "defaultUserPaymentId", required = false) Long defaultPaymentId, Principal principal,
+			Model model) {
 		User user = userService.findByUsername(principal.getName());
 		userPaymentService.setUserDefaultPayment(defaultPaymentId, user);
 

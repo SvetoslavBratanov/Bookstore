@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 
+<meta charset=utf-8>
+
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -26,27 +28,26 @@ table, th, td {
 	<!-- IF is admin -->
 	<div th:if="${isAdmin}">
 		<p>
-			New order from user: <span th:text="${user.firstName}"></span> <br />
-			User email: <span th:text="${user.email}"></span>
+			Нова поръчка от потребител: <span th:text="${user.firstName}"></span> <br />
+			Имейл на потребителя: <span th:text="${user.email}"></span>
 		</p>
 	</div>
 	<!-- ELSE -->
 	<div th:unless="${isAdmin}">
 		<p>
-			Dear <span th:text="${user.firstName}"></span>,
+			Здравейте, <span th:text="${user.firstName}"></span>,
 		</p>
-		<p>Thank you for shopping from our book store. We hope you had a
-			good time with our service!</p>
+		<p>Благодарим ви, че пазарувате от нашия магазин. Надяваме се да останете доволни от нашата услуга!</p>
 	</div>
 	<hr />
 	<h2>
-		Order details for purchase #<span th:text="${order.id}"></span>
+		Детайли за поръчка с номер #<span th:text="${order.id}"></span>
 	</h2>
 	<table>
 		<tr>
-			<th>Billing Details</th>
-			<th>Payment Information</th>
-			<th>Shipping Address</th>
+			<th>Адрес на плащане</th>
+			<th th:unless="${isAdmin}">Информация за плащането</th>
+			<th>Адрес за доставка</th>
 		</tr>
 		<tr>
 			<td><span
@@ -55,11 +56,12 @@ table, th, td {
 				<span th:text="${order.billingAddress.billingAddressCountry}"></span><br />
 				<span th:text="${order.billingAddress.billingAddressZipcode}"></span><br />
 			</td>
-			<td><span th:text="${order.payment.holderName}"></span><br /> <span
+			
+			<td th:unless="${isAdmin}"><span th:text="${order.payment.holderName}"></span><br /> <span
 				th:text="${order.payment.type}"></span><br /> <span
-				th:text="${order.payment.cardNumber}"></span><br /> <span>Exp
-					Date:</span><span th:text="${order.payment.expiryMonth}"></span>/<span
+				th:text="${order.payment.cardNumber}"></span><br /> <span>Дата на валидност:</span><span th:text="${order.payment.expiryMonth}"></span>/<span
 				th:text="${order.payment.expiryYear}"></span><br /></td>
+				
 			<td><span
 				th:text="${order.shippingAddress.shippingAddressStreet1}+' '+${order.shippingAddress.shippingAddressStreet2}"></span><br />
 				<span th:text="${order.shippingAddress.shippingAddressCity}"></span><br />
@@ -70,15 +72,15 @@ table, th, td {
 	</table>
 
 	<h3>
-		<strong>Order Summary</strong>
+		<strong>Информация на поръчката</strong>
 	</h3>
 	<table>
 		<thead>
 			<tr>
-				<td><strong>Item Name</strong></td>
-				<td class="text-center"><strong>Item Price</strong></td>
-				<td class="text-center"><strong>Item Quantity</strong></td>
-				<td class="text-right"><strong>Total</strong></td>
+				<td><strong>Име на артикул</strong></td>
+				<td class="text-center"><strong>Цена</strong></td>
+				<td class="text-center"><strong>Колечество</strong></td>
+				<td class="text-right"><strong>Общо</strong></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -91,20 +93,20 @@ table, th, td {
 			<tr>
 				<td class="highrow"></td>
 				<td class="highrow"></td>
-				<td class="highrow text-center"><strong>Subtotal</strong></td>
+				<td class="highrow text-center"><strong>Цена без ДДС</strong></td>
 				<td class="highrow text-right" data-th-text="${order.orderTotal}"></td>
 			</tr>
 			<tr>
 				<td class="emptyrow"></td>
 				<td class="emptyrow"></td>
-				<td class="emptyrow text-center"><strong>Tax</strong></td>
+				<td class="emptyrow text-center"><strong>ДДС</strong></td>
 				<td class="emptyrow text-right"
 					data-th-text="${#numbers.formatDecimal(order.orderTotal*0.20,0,2)}"></td>
 			</tr>
 			<tr>
 				<td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
 				<td class="emptyrow"></td>
-				<td class="emptyrow text-center"><strong>Total</strong></td>
+				<td class="emptyrow text-center"><strong>Обща сума (в лева)</strong></td>
 				<td th:with="total=${order.orderTotal+order.orderTotal*0.20}"
 					data-th-text="${#numbers.formatDecimal(total, 0, 2)}"
 					class="emptyrow text-right"></td>
@@ -113,7 +115,7 @@ table, th, td {
 	</table>
 
 	<br />
-	<p>Best regards,</p>
-	<p>Suave Bookstore</p>
+	<p>Поздрави,</p>
+	<p>Магазин за книги Suave</p>
 </body>
 </html>
