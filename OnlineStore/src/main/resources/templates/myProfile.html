@@ -12,7 +12,7 @@
 			<div class="col-xs-8">
 				<h2 class="section-headline">
 					<h2 class="section-headline">
-						<span> Здравей, </span><span th:text="${user.firstName}"></span>
+						<span> Здравей </span><span th:text="${user.firstName}"></span>
 					</h2>
 				</h2>
 			</div>
@@ -105,8 +105,7 @@
 												type="password" class="form-control" id="currentPassword"
 												name="password" th:value="${currentPassword}" />
 										</div>
-										<p style="color: #828282">Enter your current password to
-											change the email address or password.</p>
+										<p style="color: #828282">Въведете текущата си парола, ако искате да зададете нова.</p>
 
 										<div class="form-group">
 											<label for="email">* Имейл адрес</label> ' <span
@@ -121,7 +120,7 @@
 											определено известие.</p>
 
 										<div class="form-group">
-											<label for="txtNewPassword">Парола</label>&nbsp;<span
+											<label for="txtNewPassword">Нова парола</label>&nbsp;<span
 												id="checkPasswordMatch" style="color: red;"></span> <input
 												type="password" class="form-control" id="txtNewPassword"
 												name="newPassword"

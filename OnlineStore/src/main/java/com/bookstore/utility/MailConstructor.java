@@ -32,16 +32,16 @@ public class MailConstructor {
 		SimpleMailMessage email = new SimpleMailMessage();
 		String message = "";
 		if (newUser) {
-			message = "\nPlease click on this link to verify your email and edit your personal information."
-					+ "\nYou are going to receive your password in a separate email."
-					+ "\n\nKind regards!\nSuave Bookstore";
-			email.setSubject("Suave Bookstore - New User");
+			message = "\nМоля кликнете на този линк, за да потвърдите вашия имейл и да редактирате информацията за вашия профил."
+					+ "\nВие ще получите паролата си в отделен имейл."
+					+ "\n\nПоздрави!\nМагазин за книги Suave";
+			email.setSubject("Магазин за книги Suave - Нов потребител");
 		} else {
-			message = "\nPlease click on this link to verify your email and change your password. "
-					+ "\nYou are going to receive your new password in a separate email."
-					+ "\n\nIf you haven't done this request, you can simply ignore this message and your password won't be changed."
-					+ "\n\nKind regards!\nSuave Bookstore";
-			email.setSubject("Suave Bookstore - Forgotten password");
+			message = "\nМоля кликнете на този линк, за да потвърдите вашия имейл и да смените паролата си.Please click on this link to verify your email and change your password. "
+					+ "\nВие ще получите новата си парола в отделен имейл."
+					+ "\n\nАко не сте направили тази заявка, може просто да игнорирате това съобщение и паролата ви няма да бъде сменена."
+					+ "\n\nПоздрави!\nМазазин за книги Suave";
+			email.setSubject("Магазин за книги Suave - Забравена парола");
 		}
 	
 		email.setText(url + message);
@@ -52,12 +52,12 @@ public class MailConstructor {
 	}
 
 	public SimpleMailMessage generateNewPassword(User user, String password, Locale locale) {
-		String message = "Hello,\n\nYour password is: " + password
-				+ "\n\nKind regards!\nSuave Bookstore";
+		String message = "Здравейте,\n\nВашата парола е: " + password
+				+ "\n\nПоздрави!\nМагазин за книги Suave";
 
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
-		email.setSubject("Suave Bookstore - New password");
+		email.setSubject("Магазин за книги Suave - Нова парола");
 		email.setText(message);
 		email.setFrom(env.getProperty("support.email"));
 		return email;
@@ -81,7 +81,7 @@ public class MailConstructor {
 				} else {
 					email.setTo(user.getEmail());
 				}
-				email.setSubject("Order Confirmation - " + order.getId());
+				email.setSubject("Потвърждение на поръчката - " + order.getId());
 				email.setText(text, true);
 				email.setFrom(new InternetAddress(env.getProperty("support.email")));
 			}

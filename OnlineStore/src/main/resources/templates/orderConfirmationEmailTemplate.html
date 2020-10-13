@@ -45,12 +45,12 @@ table, th, td {
 	</h2>
 	<table>
 		<tr>
-			<th>Адрес на плащане</th>
+			<th th:unless="${isAdmin}">Адрес на плащане</th>
 			<th th:unless="${isAdmin}">Информация за плащането</th>
 			<th>Адрес за доставка</th>
 		</tr>
 		<tr>
-			<td><span
+			<td th:unless="${isAdmin}"><span
 				th:text="${order.billingAddress.billingAddressStreet1}+' '+${order.billingAddress.billingAddressStreet2}"></span><br />
 				<span th:text="${order.billingAddress.billingAddressCity}"></span><br />
 				<span th:text="${order.billingAddress.billingAddressCountry}"></span><br />

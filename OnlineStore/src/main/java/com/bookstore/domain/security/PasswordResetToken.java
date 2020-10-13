@@ -16,7 +16,7 @@ import com.bookstore.domain.User;
 @Entity
 public class PasswordResetToken {
 
-	private static final int EXPIRATION = 60 * 24;
+	private static final int EXPIRATION = 15;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
